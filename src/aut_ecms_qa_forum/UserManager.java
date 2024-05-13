@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
+//to be able to manage the user class.
 /**
  * Manages user accounts and authentication for the AUT ECMS Q/A Forum.
  */
