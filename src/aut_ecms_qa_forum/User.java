@@ -10,44 +10,69 @@ package aut_ecms_qa_forum;
  * @author Harsh & Dillan
  */
 /**
- * Abstract class representing a user in the AUT ECMS Q/A Forum.
- * Defines common properties and behaviors for all user types.
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-public abstract class User {
-    protected String username; // User's username
-    protected String password; // User's password
-    protected String role; // Role of the user (e.g., "admin" or "user")
 
-    
-        /**
-     * Constructs a User with specified username, password, and role.
-     * @param username User's username
-     * @param password User's password
-     * @param role User's role
-     */
-    
-    public User(String username, String password, String role) {
+public class User {
+    private String username;
+    private String password;
+
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.role = role;
     }
 
-    // Getters
-    public String getUsername() { return username; }
-    public String getRole() { return role; }
-
-    // Method to authenticate a user
-    public boolean authenticate(String password) {
-        return this.password.equals(password); // In a real system, use password hashing.
+    public String getUsername() {
+        return username;
     }
 
-    /**
-     * Abstract method to display the main menu specific to the user role.
-     * Subclasses are required to implement their version of this method.
-     */
-    public abstract void displayMainMenu();
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
+    }
 
-    void displayMainMenu(ConsoleUI aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    // Method to add a question
+    public void addQuestion(String title, String content, User author) {
+        Question newQuestion = new Question(title, content, author);
+        ForumDatabase.getInstance().getQuestionManager().addQuestion(newQuestion);
+    }
+
+    // Method to edit a question
+    public void editQuestion(Question question, String newTitle, String newContent) {
+        question.setTitle(newTitle);
+        question.setContent(newContent);
+    }
+
+    // Method to add an answer
+    public void addAnswer(String content, User author, Question question) {
+        Answer newAnswer = new Answer(content, author, question);
+        ForumDatabase.getInstance().getAnswerManager().addAnswer(newAnswer);
+    }
+
+    // Method to edit an answer
+    public void editAnswer(Answer answer, String newContent) {
+        answer.setContent(newContent);
+    }
+
+    // Method to delete an answer
+    public void deleteAnswer(Answer answer) {
+        ForumDatabase.getInstance().getAnswerManager().removeAnswer(answer);
+    }
+
+    // Method to add a user
+    public void addUser(String username, String password, boolean isAdmin) {
+        User newUser;
+        if (isAdmin) {
+            newUser = new Admin(username, password);
+        } else {
+            newUser = new User(username, password);
+        }
+        ForumDatabase.getInstance().getUserManager().addUser(newUser);
+    }
+
+    // Method to delete a user
+    public void deleteUser(User user) {
+        ForumDatabase.getInstance().getUserManager().removeUser(user);
     }
 }
