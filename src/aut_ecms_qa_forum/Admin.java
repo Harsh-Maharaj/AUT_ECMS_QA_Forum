@@ -1,7 +1,7 @@
 package aut_ecms_qa_forum;
 
 // this is the main admin class that has been updated to work with our GUI
-// check things
+// check admin class
 public class Admin extends User {
     public Admin(String username, String password) {
         super(username, password);

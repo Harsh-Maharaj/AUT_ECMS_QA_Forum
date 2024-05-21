@@ -20,6 +20,10 @@ public class Answer {
         this.question = question;
     }
 
+    Answer(String content, User currentUser) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getContent() {
         return content;
     }

@@ -24,6 +24,10 @@ public class Question {
         this.author = author;
     }
 
+    Question(String title, String content) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getTitle() {
         return title;
     }
@@ -50,6 +54,10 @@ public class Question {
     }
 
     List<Answer> getAnswers() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void addAnswer(Answer newAnswer) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

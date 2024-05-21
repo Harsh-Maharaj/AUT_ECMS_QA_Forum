@@ -9,22 +9,10 @@ package aut_ecms_qa_forum;
  *
  * @author Harsh & Dillan
  */
-
-
-
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class QAndAForum extends JFrame {
     private User currentUser;
@@ -33,33 +21,46 @@ public class QAndAForum extends JFrame {
     private JButton addQuestionButton;
     private JButton addAnswerButton;
     private JButton removeQuestionButton;
+    private JButton homeButton;    // Home button to see all questions
+    private JButton logoutButton;  // Logout button
     private JTextField searchField;
     private JButton searchButton;
+    private JFrame loginFrame;     // Reference to the login frame
 
-    public QAndAForum(User user) {
+    public QAndAForum(User user, JFrame loginFrame) {
         this.currentUser = user;
+        this.loginFrame = loginFrame;  // Set the reference to the login frame
+
         setTitle("AUT Q/A Forum");
-        setSize(800, 600);
+        setSize(1000, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
         // Header
         JLabel headerLabel = new JLabel("AUT Q/A Forum", SwingConstants.CENTER);
-        headerLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        headerLabel.setFont(new Font("Serif", Font.BOLD, 28));
+        headerLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(headerLabel, BorderLayout.NORTH);
 
+        // Question Panel
         questionPanel = new QuestionPanel();
-        add(questionPanel, BorderLayout.CENTER);
+        questionPanel.setBorder(BorderFactory.createTitledBorder("Questions"));
+        add(new JScrollPane(questionPanel), BorderLayout.CENTER);
 
+        // Answer Panel
         answerPanel = new AnswerPanel();
-        add(answerPanel, BorderLayout.EAST);
+        answerPanel.setPreferredSize(new Dimension(300, getHeight()));
+        answerPanel.setBorder(BorderFactory.createTitledBorder("Answers"));
+        add(new JScrollPane(answerPanel), BorderLayout.EAST);
 
+        // Search Panel
         JPanel searchPanel = new JPanel(new BorderLayout(10, 10));
         searchField = new JTextField();
         searchButton = new JButton("Search");
         searchPanel.add(searchField, BorderLayout.CENTER);
         searchPanel.add(searchButton, BorderLayout.EAST);
+        searchPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(searchPanel, BorderLayout.NORTH);
 
         searchButton.addActionListener(new ActionListener() {
@@ -72,14 +73,20 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        // Button Panel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         addQuestionButton = new JButton("Add Question");
         addAnswerButton = new JButton("Add Answer");
         removeQuestionButton = new JButton("Remove Question");
+        homeButton = new JButton("Home");    // Home button
+        logoutButton = new JButton("Logout");  // Logout button
 
         buttonPanel.add(addQuestionButton);
         buttonPanel.add(addAnswerButton);
         buttonPanel.add(removeQuestionButton);
+        buttonPanel.add(homeButton);
+        buttonPanel.add(logoutButton);
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(buttonPanel, BorderLayout.SOUTH);
 
         addQuestionButton.addActionListener(new ActionListener() {
@@ -120,6 +127,21 @@ public class QAndAForum extends JFrame {
                 } else {
                     JOptionPane.showMessageDialog(QAndAForum.this, "No question selected.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            }
+        });
+
+        homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                questionPanel.loadQuestions();
+            }
+        });
+
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                loginFrame.setVisible(true);
             }
         });
 

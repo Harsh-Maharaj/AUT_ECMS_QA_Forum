@@ -24,6 +24,14 @@ public class User {
         this.password = password;
     }
 
+    User() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    User(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getUsername() {
         return username;
     }
@@ -74,5 +82,13 @@ public class User {
     // Method to delete a user
     public void deleteUser(User user) {
         ForumDatabase.getInstance().getUserManager().removeUser(user);
+    }
+
+    void addQuestion(Question newQuestion) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void addAnswer(Answer newAnswer, Question selectedQuestion) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
