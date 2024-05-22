@@ -1,11 +1,5 @@
 package aut_ecms_qa_forum;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +39,15 @@ public class AnswerManager {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String content = rs.getString("content");
-                String author = rs.getString("author");
-                User user = ForumDatabase.getInstance().getUserManager().authenticate(author, "");
-                answers.add(new Answer(id, content, user, question));
+                String authorUsername = rs.getString("author");
+                User author = ForumDatabase.getInstance().getUserManager().getUserByUsername(authorUsername);
+
+                if (author == null) {
+                    System.err.println("Error: Author not found for answer ID " + id);
+                    continue; // Skip this answer if the author is not found
+                }
+
+                answers.add(new Answer(id, content, author, question));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,4 +55,3 @@ public class AnswerManager {
         return answers;
     }
 }
-

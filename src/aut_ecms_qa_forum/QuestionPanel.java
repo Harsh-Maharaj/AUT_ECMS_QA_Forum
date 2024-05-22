@@ -10,6 +10,7 @@ package aut_ecms_qa_forum;
  * @author Harsh & Dillan
  */
 
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -80,7 +81,11 @@ public class QuestionPanel extends JPanel {
         @Override
         public Component getListCellRendererComponent(JList<? extends Question> list, Question value, int index, boolean isSelected, boolean cellHasFocus) {
             titleLabel.setText(value.getTitle());
-            authorLabel.setText("by " + value.getAuthor().getUsername());
+            if (value.getAuthor() != null) {
+                authorLabel.setText("by " + value.getAuthor().getUsername());
+            } else {
+                authorLabel.setText("by Unknown");
+            }
             if (isSelected) {
                 setBackground(Color.LIGHT_GRAY);
             } else {

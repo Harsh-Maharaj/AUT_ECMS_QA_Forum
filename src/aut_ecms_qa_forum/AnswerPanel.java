@@ -1,32 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package aut_ecms_qa_forum;
-
-/**
- *
- * @author Harsh & Dillan
- */
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.event.ListSelectionEvent;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.util.List;
-import javax.swing.DefaultListModel;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListCellRenderer;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -44,8 +20,14 @@ public class AnswerPanel extends JPanel {
 
     public void displayAnswers(Question question) {
         listModel.clear();
+        System.out.println("Displaying answers for question: " + question.getTitle());
         List<Answer> answers = ForumDatabase.getInstance().getAnswerManager().getAnswersByQuestion(question);
         for (Answer answer : answers) {
+            if (answer.getAuthor() == null) {
+                System.err.println("Error: Answer author is null for answer: " + answer.getContent());
+            } else {
+                System.out.println("Adding answer: " + answer.getContent() + " by " + answer.getAuthor().getUsername());
+            }
             listModel.addElement(answer);
         }
     }

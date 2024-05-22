@@ -5,6 +5,8 @@
  */
 package aut_ecms_qa_forum;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author Harsh & Dillan
@@ -59,7 +61,7 @@ public class User {
         ForumDatabase.getInstance().getAnswerManager().removeAnswer(answer);
     }
 
-    public void addUser(String username, String password, boolean isAdmin) {
+    public void addUser(String username, String password, boolean isAdmin) throws SQLException {
         User newUser;
         if (isAdmin) {
             newUser = new Admin(username, password);
@@ -69,7 +71,7 @@ public class User {
         ForumDatabase.getInstance().getUserManager().addUser(newUser);
     }
 
-    public void deleteUser(User user) {
+    public void deleteUser(User user) throws SQLException {
         ForumDatabase.getInstance().getUserManager().removeUser(user);
     }
 }

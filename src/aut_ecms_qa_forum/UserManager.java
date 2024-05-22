@@ -1,38 +1,25 @@
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package aut_ecms_qa_forum;
-
-/**
- *
- * @author Harsh& Dillan
- */
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class UserManager {
-    public void addUser(User user) {
-        String sql = "INSERT INTO Users (username, password, isAdmin) VALUES (?, ?, ?)";
-        try (Connection conn = DerbyDatabaseManager.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, user.getUsername());
-            pstmt.setString(2, user.getPassword());
-            pstmt.setBoolean(3, user instanceof Admin);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public void addUser(User user) throws SQLException {
+        if (!userExists(user.getUsername())) {
+            String sql = "INSERT INTO Users (username, password, isAdmin) VALUES (?, ?, ?)";
+            try (Connection conn = DerbyDatabaseManager.getConnection();
+                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, user.getUsername());
+                pstmt.setString(2, user.getPassword());
+                pstmt.setBoolean(3, user instanceof Admin);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public void removeUser(User user) {
+    public void removeUser(User user) throws SQLException {
         String sql = "DELETE FROM Users WHERE username = ?";
         try (Connection conn = DerbyDatabaseManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -58,6 +45,36 @@ public class UserManager {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public User getUserByUsername(String username) {
+        String sql = "SELECT * FROM Users WHERE username = ?";
+        try (Connection conn = DerbyDatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                String password = rs.getString("password");
+                boolean isAdmin = rs.getBoolean("isAdmin");
+                return isAdmin ? new Admin(username, password) : new User(username, password);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean userExists(String username) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM Users WHERE username = ?";
+        try (Connection conn = DerbyDatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        }
+        return false;
     }
 
     public ArrayList<User> getAllUsers() {

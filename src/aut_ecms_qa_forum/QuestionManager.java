@@ -29,6 +29,13 @@ public class QuestionManager {
     }
 
     public void removeQuestion(Question question) {
+        // Delete all answers associated with this question first
+        AnswerManager answerManager = ForumDatabase.getInstance().getAnswerManager();
+        List<Answer> answers = answerManager.getAnswersByQuestion(question);
+        for (Answer answer : answers) {
+            answerManager.removeAnswer(answer);
+        }
+        // Then delete the question
         String sql = "DELETE FROM Questions WHERE id = ?";
         try (Connection conn = DerbyDatabaseManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -50,7 +57,7 @@ public class QuestionManager {
                 String title = rs.getString("title");
                 String content = rs.getString("content");
                 String author = rs.getString("author");
-                User user = ForumDatabase.getInstance().getUserManager().authenticate(author, "");
+                User user = ForumDatabase.getInstance().getUserManager().getUserByUsername(author);
                 questions.add(new Question(id, title, content, user));
             }
         } catch (SQLException e) {

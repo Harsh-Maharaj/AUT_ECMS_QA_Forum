@@ -17,6 +17,10 @@ import java.sql.Statement;
 
 public class DerbyDatabaseManager {
     private static final String DB_URL = "jdbc:derby:forumDB;create=true";
+    private static final String SHUTDOWN_URL = "jdbc:derby:forumDB;shutdown=true";
+    private static final String DB_USERNAME = "admin";
+    private static final String DB_PASSWORD = "user1"; // Password from the properties file
+
 
     static {
         try {
@@ -27,10 +31,12 @@ public class DerbyDatabaseManager {
     }
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(DB_URL);
+        return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
 
     public static void initializeDatabase() {
+        shutdownDatabase(); // Ensure the previous connection is closed before initializing the database
+
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement()) {
             String createUserTable = "CREATE TABLE Users (" +
                     "username VARCHAR(255) PRIMARY KEY, " +
@@ -56,9 +62,21 @@ public class DerbyDatabaseManager {
 
             System.out.println("Database initialized successfully");
         } catch (SQLException e) {
-            e.printStackTrace();
+            if (!"X0Y32".equals(e.getSQLState())) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void shutdownDatabase() {
+        try {
+            DriverManager.getConnection(SHUTDOWN_URL, DB_USERNAME, DB_PASSWORD);
+        } catch (SQLException e) {
+            if ("XJ015".equals(e.getSQLState())) {
+                System.out.println("Database shut down normally");
+            } else {
+                e.printStackTrace();
+            }
         }
     }
 }
-
-

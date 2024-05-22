@@ -1,18 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package aut_ecms_qa_forum;
-
-/**
- *
- * @author Harsh & Dillan
- */
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,6 +74,15 @@ public class LoginGUI extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
+        // Ensure proper shutdown of the database on JVM exit
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            DerbyDatabaseManager.shutdownDatabase();
+        }));
+
+        // Initialize the database before launching the GUI
+        DerbyDatabaseManager.initializeDatabase();
+
+        // Launch the GUI
         SwingUtilities.invokeLater(() -> new LoginGUI().setVisible(true));
     }
 }
