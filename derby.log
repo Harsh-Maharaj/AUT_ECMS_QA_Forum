@@ -1,0 +1,31 @@
+Wed May 22 19:08:23 NZST 2024 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Wed May 22 19:08:23 NZST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-9f21-2f06-ffffc0553e87 
+on database directory C:\Users\harsh\Downloads\P09_22164966_22174809\AUT_ECMS_QA_FORUM_\AUT_ECMS_QA_FORUM\AUT_ECMS_QA_FORUM\forumDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/harsh/Downloads/db-derby-10.14.2.0-lib/db-derby-10.14.2.0-lib/lib/derby.jar
+java.vendor=Eclipse Adoptium
+java.runtime.version=17.0.8.1+1
+user.dir=C:\Users\harsh\Downloads\db-derby-10.14.2.0-lib\db-derby-10.14.2.0-lib
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\harsh\Downloads\P09_22164966_22174809\AUT_ECMS_QA_FORUM_\AUT_ECMS_QA_FORUM\AUT_ECMS_QA_FORUM
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Wed May 22 19:08:23 NZST 2024:
+Shutting down instance a816c00e-018f-9f21-2f06-ffffc0553e87 on database directory C:\Users\harsh\Downloads\P09_22164966_22174809\AUT_ECMS_QA_FORUM_\AUT_ECMS_QA_FORUM\AUT_ECMS_QA_FORUM\forumDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@73d16e93 
+Wed May 22 19:08:23 NZST 2024 Thread[DRDAConnThread_2,5,main] (DATABASE = forumDB), (DRDAID = {2}), Database 'forumDB' shutdown.
+----------------------------------------------------------------
+Wed May 22 19:08:30 NZST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 6ede40af-018f-9f21-2f06-ffffc0553e87 
+on database directory C:\Users\harsh\Downloads\P09_22164966_22174809\AUT_ECMS_QA_FORUM_\AUT_ECMS_QA_FORUM\AUT_ECMS_QA_FORUM\forumDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/harsh/Downloads/db-derby-10.14.2.0-lib/db-derby-10.14.2.0-lib/lib/derby.jar
+java.vendor=Eclipse Adoptium
+java.runtime.version=17.0.8.1+1
+user.dir=C:\Users\harsh\Downloads\db-derby-10.14.2.0-lib\db-derby-10.14.2.0-lib
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\harsh\Downloads\P09_22164966_22174809\AUT_ECMS_QA_FORUM_\AUT_ECMS_QA_FORUM\AUT_ECMS_QA_FORUM
+Database Class Loader started - derby.database.classpath=''
