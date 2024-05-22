@@ -13,8 +13,6 @@ package aut_ecms_qa_forum;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ForumDatabase {
     private static ForumDatabase instance;
@@ -27,7 +25,8 @@ public class ForumDatabase {
         questionManager = new QuestionManager();
         answerManager = new AnswerManager();
 
-        // Add some sample data
+        DerbyDatabaseManager.initializeDatabase();
+
         User admin = new Admin("admin", "adminpass");
         User user = new User("user", "userpass");
         userManager.addUser(admin);
