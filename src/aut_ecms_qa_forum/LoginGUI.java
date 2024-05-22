@@ -13,6 +13,7 @@ package aut_ecms_qa_forum;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -30,7 +31,6 @@ public class LoginGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
-        // Header
         JLabel headerLabel = new JLabel("Welcome to the AUT Q/A Forum", SwingConstants.CENTER);
         headerLabel.setFont(new Font("Serif", Font.BOLD, 20));
         add(headerLabel, BorderLayout.NORTH);
