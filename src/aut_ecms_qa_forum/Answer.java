@@ -9,10 +9,19 @@ package aut_ecms_qa_forum;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+
 public class Answer {
+    private int id;
     private String content;
     private User author;
     private Question question;
+
+    public Answer(int id, String content, User author, Question question) {
+        this.id = id;
+        this.content = content;
+        this.author = author;
+        this.question = question;
+    }
 
     public Answer(String content, User author, Question question) {
         this.content = content;
@@ -20,8 +29,8 @@ public class Answer {
         this.question = question;
     }
 
-    Answer(String content, User currentUser) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int getId() {
+        return id;
     }
 
     public String getContent() {
