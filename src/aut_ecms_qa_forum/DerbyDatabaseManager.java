@@ -1,26 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package aut_ecms_qa_forum;
-
-/**
- *
- * @author harsh
- */
-
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.io.File;
 
 public class DerbyDatabaseManager {
     private static final String DB_URL = "jdbc:derby:forumDB;create=true";
-    private static final String SHUTDOWN_URL = "jdbc:derby:forumDB;shutdown=true";
     private static final String DB_USERNAME = "admin";
     private static final String DB_PASSWORD = "user1"; // Password from the properties file
-
 
     static {
         try {
@@ -34,9 +23,25 @@ public class DerbyDatabaseManager {
         return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
 
-    public static void initializeDatabase() {
-        shutdownDatabase(); // Ensure the previous connection is closed before initializing the database
+    public static void shutdownDatabase() {
+        try {
+            DriverManager.getConnection("jdbc:derby:forumDB;shutdown=true");
+        } catch (SQLException e) {
+            if (!"XJ015".equals(e.getSQLState())) {
+                e.printStackTrace();
+            }
+        }
+    }
 
+    public static void deleteLockFiles() {
+        File lockFile = new File("forumDB/db.lck");
+        if (lockFile.exists()) {
+            lockFile.delete();
+            System.out.println("Deleted lock file: " + lockFile.getPath());
+        }
+    }
+
+    public static void initializeDatabase() {
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement()) {
             String createUserTable = "CREATE TABLE Users (" +
                     "username VARCHAR(255) PRIMARY KEY, " +
@@ -64,19 +69,16 @@ public class DerbyDatabaseManager {
         } catch (SQLException e) {
             if (!"X0Y32".equals(e.getSQLState())) {
                 e.printStackTrace();
+            } else {
+                System.out.println("Tables already exist. Skipping creation.");
             }
         }
     }
 
-    public static void shutdownDatabase() {
-        try {
-            DriverManager.getConnection(SHUTDOWN_URL, DB_USERNAME, DB_PASSWORD);
-        } catch (SQLException e) {
-            if ("XJ015".equals(e.getSQLState())) {
-                System.out.println("Database shut down normally");
-            } else {
-                e.printStackTrace();
-            }
-        }
+    public static void main(String[] args) {
+        deleteLockFiles();
+        shutdownDatabase();
+        initializeDatabase();
+        // Additional code for starting your application
     }
 }

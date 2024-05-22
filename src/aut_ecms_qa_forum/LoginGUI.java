@@ -74,10 +74,13 @@ public class LoginGUI extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        // Ensure proper shutdown of the database on JVM exit
+        // Add a shutdown hook to ensure proper shutdown of the database
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             DerbyDatabaseManager.shutdownDatabase();
         }));
+
+        // Delete any existing lock files before initializing the database
+        DerbyDatabaseManager.deleteLockFiles();
 
         // Initialize the database before launching the GUI
         DerbyDatabaseManager.initializeDatabase();
