@@ -12,19 +12,19 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/AnswerPanel.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/ForumDatabase.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/Question.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/Answer.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/User.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/Admin.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/QAndAForum.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/LoginGUI.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/AnswerManager.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/UserManager.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/QuestionManager.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/QuestionPanel.java</file>
-            <file>file:/C:/Users/harsh/Downloads/P09_22164966_22174809/AUT_ECMS_QA_FORUM_/AUT_ECMS_QA_FORUM/AUT_ECMS_QA_FORUM/src/aut_ecms_qa_forum/DerbyDatabaseManager.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/AnswerPanel.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/ForumDatabase.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/LoginGUI.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/DerbyDatabaseManager.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/Answer.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/Admin.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/UserManager.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/AnswerManager.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/QuestionManager.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/QAndAForum.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/Question.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/User.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/QuestionPanel.java</file>
         </group>
     </open-files>
 </project-private>
