@@ -3,12 +3,14 @@ package aut_ecms_qa_forum;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class QuestionManager {
 
     public void addQuestion(Question question) {
         if (isDuplicateQuestion(question)) {
-            System.out.println("Duplicate question. The question already exists in the database.");
+            // Show popup dialog
+            JOptionPane.showMessageDialog(null, "Duplicate question. The question already exists in the database.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
