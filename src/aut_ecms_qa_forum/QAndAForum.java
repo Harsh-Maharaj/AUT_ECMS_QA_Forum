@@ -38,7 +38,7 @@ public class QAndAForum extends JFrame {
         questionPanel.setBorder(BorderFactory.createTitledBorder("Questions"));
         add(new JScrollPane(questionPanel), BorderLayout.CENTER);
 
-        answerPanel = new AnswerPanel();
+        answerPanel = new AnswerPanel(currentUser);
         answerPanel.setPreferredSize(new Dimension(300, getHeight()));
         answerPanel.setBorder(BorderFactory.createTitledBorder("Answers"));
         add(new JScrollPane(answerPanel), BorderLayout.EAST);
