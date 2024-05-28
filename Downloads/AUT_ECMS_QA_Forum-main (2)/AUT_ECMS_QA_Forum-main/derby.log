@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue May 28 14:24:15 NZST 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-bd03-345c-00000d5071a8 
+Tue May 28 14:37:27 NZST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-bd0f-4978-00000d5071d0 
 on database directory C:\Users\Harsh Maharaj\Downloads\AUT_ECMS_QA_Forum-main (2)\AUT_ECMS_QA_Forum-main\forumDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@3f99bd52 
 Loaded from file:/C:/Users/Harsh%20Maharaj/Downloads/AUT_ECMS_QA_Forum-main%20(2)/AUT_ECMS_QA_Forum-main/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -11,7 +11,7 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
-Tue May 28 14:24:43 NZST 2024 Thread[#21,Thread-0,5,main] (XID = 2893), (SESSIONID = 2), (DATABASE = forumDB), (DRDAID = null), Cleanup action starting
+Tue May 28 14:37:34 NZST 2024 Thread[#21,Thread-0,5,main] (XID = 2949), (SESSIONID = 26), (DATABASE = forumDB), (DRDAID = null), Cleanup action starting
 java.sql.SQLNonTransientConnectionException: Connection authentication failure occurred.  Reason: Invalid authentication..
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
