@@ -1,14 +1,5 @@
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package aut_ecms_qa_forum;
 
-/**
- *
- * @author Harsh & Dillan
- */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,17 +10,18 @@ public class QAndAForum extends JFrame {
     private QuestionPanel questionPanel;
     private AnswerPanel answerPanel;
     private JButton addQuestionButton;
+    private JButton editQuestionButton; // New edit button
     private JButton addAnswerButton;
     private JButton removeQuestionButton;
-    private JButton homeButton;    // Home button to see all questions
-    private JButton logoutButton;  // Logout button
+    private JButton homeButton;
+    private JButton logoutButton;
     private JTextField searchField;
     private JButton searchButton;
-    private JFrame loginFrame;     // Reference to the login frame
+    private JFrame loginFrame;
 
     public QAndAForum(User user, JFrame loginFrame) {
         this.currentUser = user;
-        this.loginFrame = loginFrame;  // Set the reference to the login frame
+        this.loginFrame = loginFrame;
 
         setTitle("AUT Q/A Forum");
         setSize(1000, 700);
@@ -37,24 +29,20 @@ public class QAndAForum extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
-        // Header
         JLabel headerLabel = new JLabel("AUT Q/A Forum", SwingConstants.CENTER);
         headerLabel.setFont(new Font("Serif", Font.BOLD, 28));
         headerLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(headerLabel, BorderLayout.NORTH);
 
-        // Question Panel
         questionPanel = new QuestionPanel();
         questionPanel.setBorder(BorderFactory.createTitledBorder("Questions"));
         add(new JScrollPane(questionPanel), BorderLayout.CENTER);
 
-        // Answer Panel
         answerPanel = new AnswerPanel();
         answerPanel.setPreferredSize(new Dimension(300, getHeight()));
         answerPanel.setBorder(BorderFactory.createTitledBorder("Answers"));
         add(new JScrollPane(answerPanel), BorderLayout.EAST);
 
-        // Search Panel
         JPanel searchPanel = new JPanel(new BorderLayout(10, 10));
         searchField = new JTextField();
         searchButton = new JButton("Search");
@@ -73,15 +61,16 @@ public class QAndAForum extends JFrame {
             }
         });
 
-        // Button Panel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         addQuestionButton = new JButton("Add Question");
+        editQuestionButton = new JButton("Edit Question"); // New edit button
         addAnswerButton = new JButton("Add Answer");
         removeQuestionButton = new JButton("Remove Question");
-        homeButton = new JButton("Home");    // Home button
-        logoutButton = new JButton("Logout");  // Logout button
+        homeButton = new JButton("Home");
+        logoutButton = new JButton("Logout");
 
         buttonPanel.add(addQuestionButton);
+        buttonPanel.add(editQuestionButton); // Add edit button to panel
         buttonPanel.add(addAnswerButton);
         buttonPanel.add(removeQuestionButton);
         buttonPanel.add(homeButton);
@@ -101,6 +90,23 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        editQuestionButton.addActionListener(new ActionListener() { // Edit button action listener
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Question selectedQuestion = questionPanel.getSelectedQuestion();
+                if (selectedQuestion != null) {
+                    String newTitle = JOptionPane.showInputDialog("Enter new question title:", selectedQuestion.getTitle());
+                    String newContent = JOptionPane.showInputDialog("Enter new question content:", selectedQuestion.getContent());
+                    if (newTitle != null && newContent != null && !newTitle.trim().isEmpty() && !newContent.trim().isEmpty()) {
+                        currentUser.editQuestion(selectedQuestion, newTitle, newContent);
+                        questionPanel.loadQuestions();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(QAndAForum.this, "No question selected.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
         addAnswerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -108,7 +114,7 @@ public class QAndAForum extends JFrame {
                 Question selectedQuestion = questionPanel.getSelectedQuestion();
                 if (selectedQuestion != null && content != null && !content.trim().isEmpty()) {
                     currentUser.addAnswer(content, currentUser, selectedQuestion);
-                    questionPanel.loadQuestions();  // This assumes that answers are also reloaded; adjust if necessary
+                    questionPanel.loadQuestions();
                 }
             }
         });
