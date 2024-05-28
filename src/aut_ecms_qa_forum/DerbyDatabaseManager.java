@@ -1,10 +1,10 @@
 package aut_ecms_qa_forum;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.io.File;
 
 public class DerbyDatabaseManager {
     private static final String DB_URL = "jdbc:derby:forumDB;create=true";
@@ -23,21 +23,14 @@ public class DerbyDatabaseManager {
         return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
     }
 
-    public static void shutdownDatabase() {
-        try {
-            DriverManager.getConnection("jdbc:derby:forumDB;shutdown=true");
-        } catch (SQLException e) {
-            if (!"XJ015".equals(e.getSQLState())) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     public static void deleteLockFiles() {
         File lockFile = new File("forumDB/db.lck");
         if (lockFile.exists()) {
-            lockFile.delete();
-            System.out.println("Deleted lock file: " + lockFile.getPath());
+            if (lockFile.delete()) {
+                System.out.println("Deleted lock file: " + lockFile.getPath());
+            } else {
+                System.err.println("Failed to delete lock file: " + lockFile.getPath());
+            }
         }
     }
 
@@ -77,7 +70,6 @@ public class DerbyDatabaseManager {
 
     public static void main(String[] args) {
         deleteLockFiles();
-        shutdownDatabase();
         initializeDatabase();
         // Additional code for starting your application
     }
