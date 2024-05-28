@@ -1,21 +1,17 @@
 package aut_ecms_qa_forum;
 
-/**
- *
- * @author Harsh & Dillan
- */
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionManager {
+
     public void addQuestion(Question question) {
+        if (isDuplicateQuestion(question)) {
+            System.out.println("Duplicate question. The question already exists in the database.");
+            return;
+        }
+
         String sql = "INSERT INTO Questions (title, content, author) VALUES (?, ?, ?)";
         try (Connection conn = DerbyDatabaseManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -26,6 +22,22 @@ public class QuestionManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean isDuplicateQuestion(Question question) {
+        String sql = "SELECT COUNT(*) FROM Questions WHERE title = ? AND content = ?";
+        try (Connection conn = DerbyDatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, question.getTitle());
+            pstmt.setString(2, question.getContent());
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void removeQuestion(Question question) {
