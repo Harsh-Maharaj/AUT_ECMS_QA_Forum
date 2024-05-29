@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DerbyDatabaseManager {
-    private static final String DB_URL = "jdbc:derby:forumDB;create=true";
+    private static final String DB_URL = "jdbc:derby:./forumDB;create=true";
     private static final String DB_USERNAME = "admin";
     private static final String DB_PASSWORD = "user1"; // Password from the properties file
 

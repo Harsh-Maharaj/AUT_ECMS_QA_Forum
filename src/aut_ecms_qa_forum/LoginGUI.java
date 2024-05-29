@@ -6,9 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginGUI extends JFrame implements ActionListener {
-    private JTextField userTextField;
-    private JPasswordField passwordField;
-    private JButton loginButton;
+    JTextField userTextField;
+    JPasswordField passwordField;
+    JButton loginButton;
 
     public LoginGUI() {
         setTitle("Login Form");
