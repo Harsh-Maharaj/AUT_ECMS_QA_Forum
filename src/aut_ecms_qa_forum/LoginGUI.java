@@ -1,17 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package aut_ecms_qa_forum;
-
-/**
- *
- * @author Harsh & Dillan
- */
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,9 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginGUI extends JFrame implements ActionListener {
-    private JTextField userTextField;
-    private JPasswordField passwordField;
-    private JButton loginButton;
+    JTextField userTextField;
+    JPasswordField passwordField;
+    JButton loginButton;
 
     public LoginGUI() {
         setTitle("Login Form");
@@ -30,7 +17,6 @@ public class LoginGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
-        // Header
         JLabel headerLabel = new JLabel("Welcome to the AUT Q/A Forum", SwingConstants.CENTER);
         headerLabel.setFont(new Font("Serif", Font.BOLD, 20));
         add(headerLabel, BorderLayout.NORTH);
@@ -88,6 +74,13 @@ public class LoginGUI extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
+        // Delete any existing lock files before initializing the database
+        DerbyDatabaseManager.deleteLockFiles();
+
+        // Initialize the database before launching the GUI
+        DerbyDatabaseManager.initializeDatabase();
+
+        // Launch the GUI
         SwingUtilities.invokeLater(() -> new LoginGUI().setVisible(true));
     }
 }

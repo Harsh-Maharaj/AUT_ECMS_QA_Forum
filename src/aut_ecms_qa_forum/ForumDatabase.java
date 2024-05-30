@@ -4,6 +4,8 @@
  */
 package aut_ecms_qa_forum;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author harsh
@@ -13,8 +15,6 @@ package aut_ecms_qa_forum;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ForumDatabase {
     private static ForumDatabase instance;
@@ -27,11 +27,9 @@ public class ForumDatabase {
         questionManager = new QuestionManager();
         answerManager = new AnswerManager();
 
-        // Add some sample data
-        User admin = new Admin("admin", "adminpass");
-        User user = new User("user", "userpass");
-        userManager.addUser(admin);
-        userManager.addUser(user);
+        DerbyDatabaseManager.initializeDatabase();
+
+        initializeUsers();
     }
 
     public static synchronized ForumDatabase getInstance() {
@@ -39,6 +37,19 @@ public class ForumDatabase {
             instance = new ForumDatabase();
         }
         return instance;
+    }
+
+    private void initializeUsers() {
+        try {
+            if (!userManager.userExists("admin")) {
+                userManager.addUser(new Admin("admin", "adminpass"));
+            }
+            if (!userManager.userExists("user")) {
+                userManager.addUser(new User("user", "userpass"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public UserManager getUserManager() {

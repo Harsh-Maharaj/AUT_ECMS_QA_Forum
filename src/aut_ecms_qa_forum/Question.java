@@ -9,23 +9,34 @@ package aut_ecms_qa_forum;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+
+import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class Question {
+    private int id;
     private String title;
     private String content;
     private User author;
+    private List<Answer> answers;
+
+    public Question(int id, String title, String content, User author) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.author = author;
+        this.answers = new ArrayList<>();
+    }
 
     public Question(String title, String content, User author) {
         this.title = title;
         this.content = content;
         this.author = author;
+        this.answers = new ArrayList<>();
     }
 
-    Question(String title, String content) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -48,16 +59,16 @@ public class Question {
         return author;
     }
 
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void addAnswer(Answer newAnswer) {
+        answers.add(newAnswer);
+    }
+
     @Override
     public String toString() {
         return title;
-    }
-
-    List<Answer> getAnswers() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    void addAnswer(Answer newAnswer) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
