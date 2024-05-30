@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 // Token for harsh github: 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
 // Token for Dillan gihub: 
-// Testing purposes for Branch merging
+// Testing purposes for Branch merging on the github
 public class Admin extends User {
     /**
      * Constructor for the Admin class.
