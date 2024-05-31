@@ -75,3 +75,4 @@ public class User {
         ForumDatabase.getInstance().getUserManager().removeUser(user);
     }
 }
+// testing for comments
