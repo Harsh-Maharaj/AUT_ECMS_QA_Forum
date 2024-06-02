@@ -4,7 +4,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The AnswerManager class provides methods to manage answers in the forum.
+ * It includes methods to add, remove, and retrieve answers by question.
+ */
 public class AnswerManager {
+
+    /**
+     * Adds a new answer to the database.
+     * 
+     * @param answer The answer to be added
+     */
     public void addAnswer(Answer answer) {
         String sql = "INSERT INTO Answers (content, author, questionId) VALUES (?, ?, ?)";
         try (Connection conn = DerbyDatabaseManager.getConnection();
@@ -18,6 +28,11 @@ public class AnswerManager {
         }
     }
 
+    /**
+     * Removes an answer from the database.
+     * 
+     * @param answer The answer to be removed
+     */
     public void removeAnswer(Answer answer) {
         String sql = "DELETE FROM Answers WHERE id = ?";
         try (Connection conn = DerbyDatabaseManager.getConnection();
@@ -29,6 +44,12 @@ public class AnswerManager {
         }
     }
 
+    /**
+     * Retrieves a list of answers for a given question from the database.
+     * 
+     * @param question The question for which answers are to be retrieved
+     * @return A list of answers for the specified question
+     */
     public List<Answer> getAnswersByQuestion(Question question) {
         List<Answer> answers = new ArrayList<>();
         String sql = "SELECT * FROM Answers WHERE questionId = ?";
