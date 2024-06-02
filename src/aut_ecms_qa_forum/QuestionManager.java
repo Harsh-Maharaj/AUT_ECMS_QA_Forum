@@ -5,11 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
+/**
+ * The QuestionManager class provides methods to manage questions in the forum.
+ * It includes methods to add, remove, and retrieve questions.
+ */
 public class QuestionManager {
 
+    /**
+     * Adds a new question to the database.
+     * If the question already exists, shows an error message.
+     * 
+     * @param question The question to be added
+     */
     public void addQuestion(Question question) {
         if (isDuplicateQuestion(question)) {
-            // Show popup dialog
+            // Show popup dialog for duplicate question
             JOptionPane.showMessageDialog(null, "Duplicate question. The question already exists in the database.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -26,6 +36,12 @@ public class QuestionManager {
         }
     }
 
+    /**
+     * Checks if a question is a duplicate.
+     * 
+     * @param question The question to be checked
+     * @return True if the question is a duplicate, false otherwise
+     */
     private boolean isDuplicateQuestion(Question question) {
         String sql = "SELECT COUNT(*) FROM Questions WHERE title = ? AND content = ?";
         try (Connection conn = DerbyDatabaseManager.getConnection();
@@ -42,6 +58,12 @@ public class QuestionManager {
         return false;
     }
 
+    /**
+     * Removes a question from the database.
+     * First deletes all answers associated with the question.
+     * 
+     * @param question The question to be removed
+     */
     public void removeQuestion(Question question) {
         // Delete all answers associated with this question first
         AnswerManager answerManager = ForumDatabase.getInstance().getAnswerManager();
@@ -60,6 +82,11 @@ public class QuestionManager {
         }
     }
 
+    /**
+     * Retrieves all questions from the database.
+     * 
+     * @return A list of all questions
+     */
     public List<Question> getAllQuestions() {
         List<Question> questions = new ArrayList<>();
         String sql = "SELECT * FROM Questions";
