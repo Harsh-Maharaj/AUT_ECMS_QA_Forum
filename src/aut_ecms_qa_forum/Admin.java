@@ -1,5 +1,9 @@
 package aut_ecms_qa_forum;
 
+/**
+ * @author Harsh & Dillan
+ */
+
 // This is the main admin class that has been updated to work with our GUI
 
 import java.sql.SQLException;
