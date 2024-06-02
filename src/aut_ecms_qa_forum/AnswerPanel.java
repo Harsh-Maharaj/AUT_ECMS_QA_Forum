@@ -7,12 +7,21 @@ import java.util.List;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+/**
+ * The AnswerPanel class is a custom JPanel that displays a list of answers for a given question.
+ * It provides a context menu for editing answers and uses a custom list cell renderer for displaying answers.
+ */
 public class AnswerPanel extends JPanel {
-    private DefaultListModel<Answer> listModel;
-    private JList<Answer> answerList;
-    private JPopupMenu contextMenu;
-    private User currentUser;
+    private DefaultListModel<Answer> listModel; // Model to store the list of answers
+    private JList<Answer> answerList; // JList to display the answers
+    private JPopupMenu contextMenu; // Context menu for editing answers
+    private User currentUser; // Current user interacting with the panel
 
+    /**
+     * Constructs an AnswerPanel for the specified user.
+     * 
+     * @param currentUser The user interacting with the panel
+     */
     public AnswerPanel(User currentUser) {
         this.currentUser = currentUser;
         setLayout(new BorderLayout(10, 10));
@@ -55,6 +64,11 @@ public class AnswerPanel extends JPanel {
         });
     }
 
+    /**
+     * Displays answers for the specified question in the panel.
+     * 
+     * @param question The question for which answers are to be displayed
+     */
     public void displayAnswers(Question question) {
         listModel.clear();
         System.out.println("Displaying answers for question: " + question.getTitle());
@@ -69,13 +83,24 @@ public class AnswerPanel extends JPanel {
         }
     }
 
+    /**
+     * Gets the selected answer from the list.
+     * 
+     * @return The selected answer
+     */
     public Answer getSelectedAnswer() {
         return answerList.getSelectedValue();
     }
 
+    /**
+     * Custom list cell renderer for displaying answers in the JList.
+     */
     private class AnswerListCellRenderer extends JPanel implements ListCellRenderer<Answer> {
-        private JLabel label;
+        private JLabel label; // Label to display the answer content
 
+        /**
+         * Constructs an AnswerListCellRenderer.
+         */
         public AnswerListCellRenderer() {
             setLayout(new BorderLayout(10, 10));
             setBorder(new EmptyBorder(10, 10, 10, 10));
