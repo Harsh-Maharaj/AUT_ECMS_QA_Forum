@@ -5,20 +5,31 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The QAndAForum class provides the main graphical user interface for the Q/A forum.
+ * It includes panels for displaying questions and answers, and buttons for various actions.
+ */
 public class QAndAForum extends JFrame {
-    private User currentUser;
-    private QuestionPanel questionPanel;
-    private AnswerPanel answerPanel;
-    private JButton addQuestionButton;
-    private JButton editQuestionButton; // New edit button
-    private JButton addAnswerButton;
-    private JButton removeQuestionButton;
-    private JButton homeButton;
-    private JButton logoutButton;
-    private JTextField searchField;
-    private JButton searchButton;
-    private JFrame loginFrame;
+    private User currentUser; // The current user interacting with the forum
+    private QuestionPanel questionPanel; // Panel for displaying questions
+    private AnswerPanel answerPanel; // Panel for displaying answers
+    private JButton addQuestionButton; // Button to add a new question
+    private JButton editQuestionButton; // Button to edit a selected question
+    private JButton addAnswerButton; // Button to add a new answer
+    private JButton removeQuestionButton; // Button to remove a selected question
+    private JButton homeButton; // Button to reload all questions
+    private JButton logoutButton; // Button to log out of the forum
+    private JTextField searchField; // Text field for entering search queries
+    private JButton searchButton; // Button to perform the search
+    private JFrame loginFrame; // The login frame to return to upon logout
 
+    /**
+     * Constructs the QAndAForum with the specified user and login frame.
+     * Initializes the GUI components and sets up the action listeners.
+     * 
+     * @param user The current user
+     * @param loginFrame The login frame
+     */
     public QAndAForum(User user, JFrame loginFrame) {
         this.currentUser = user;
         this.loginFrame = loginFrame;
@@ -29,20 +40,24 @@ public class QAndAForum extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
+        // Header label
         JLabel headerLabel = new JLabel("AUT Q/A Forum", SwingConstants.CENTER);
         headerLabel.setFont(new Font("Serif", Font.BOLD, 28));
         headerLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(headerLabel, BorderLayout.NORTH);
 
+        // Question panel
         questionPanel = new QuestionPanel();
         questionPanel.setBorder(BorderFactory.createTitledBorder("Questions"));
         add(new JScrollPane(questionPanel), BorderLayout.CENTER);
 
+        // Answer panel
         answerPanel = new AnswerPanel(currentUser);
         answerPanel.setPreferredSize(new Dimension(300, getHeight()));
         answerPanel.setBorder(BorderFactory.createTitledBorder("Answers"));
         add(new JScrollPane(answerPanel), BorderLayout.EAST);
 
+        // Search panel
         JPanel searchPanel = new JPanel(new BorderLayout(10, 10));
         searchField = new JTextField();
         searchButton = new JButton("Search");
@@ -51,6 +66,7 @@ public class QAndAForum extends JFrame {
         searchPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(searchPanel, BorderLayout.NORTH);
 
+        // Search button action listener
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,6 +77,7 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        // Button panel for various actions
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         addQuestionButton = new JButton("Add Question");
         editQuestionButton = new JButton("Edit Question"); // New edit button
@@ -78,6 +95,7 @@ public class QAndAForum extends JFrame {
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(buttonPanel, BorderLayout.SOUTH);
 
+        // Add question button action listener
         addQuestionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -90,6 +108,7 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        // Edit question button action listener
         editQuestionButton.addActionListener(new ActionListener() { // Edit button action listener
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -107,6 +126,7 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        // Add answer button action listener
         addAnswerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,6 +139,7 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        // Remove question button action listener
         removeQuestionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -136,6 +157,7 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        // Home button action listener
         homeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -143,6 +165,7 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        // Logout button action listener
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -151,6 +174,7 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        // Question selection listener to display answers for the selected question
         questionPanel.addQuestionSelectionListener(e -> {
             Question selectedQuestion = questionPanel.getSelectedQuestion();
             if (selectedQuestion != null) {
@@ -158,6 +182,7 @@ public class QAndAForum extends JFrame {
             }
         });
 
+        // Load all questions initially
         questionPanel.loadQuestions();
     }
 }
