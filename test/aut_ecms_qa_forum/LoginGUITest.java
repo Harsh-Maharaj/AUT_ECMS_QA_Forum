@@ -14,14 +14,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * The LoginGUITest class provides unit tests for the LoginGUI class.
+ */
 public class LoginGUITest {
-    private LoginGUI loginGUI;
+    private LoginGUI loginGUI; // Instance of the LoginGUI for testing
 
+    /**
+     * Sets up the test environment before each test.
+     * Initializes the LoginGUI instance.
+     */
     @Before
     public void setUp() {
         loginGUI = new LoginGUI();
     }
 
+    /**
+     * Tests the initialization of components in the LoginGUI.
+     * Verifies that all components are correctly initialized.
+     */
     @Test
     public void testComponentsInitialization() {
         assertNotNull(loginGUI);
@@ -40,6 +51,10 @@ public class LoginGUITest {
         assertEquals("Login", loginButton.getText());
     }
 
+    /**
+     * Tests the login action performed method of the LoginGUI class.
+     * Verifies the behavior when the login button is clicked with valid credentials.
+     */
     @Test
     public void testLoginActionPerformed() {
         loginGUI.userTextField.setText("user");
@@ -53,6 +68,10 @@ public class LoginGUITest {
         // this part is limited to checking GUI responses or state changes.
     }
 
+    /**
+     * Tests the login action performed method of the LoginGUI class with invalid credentials.
+     * Verifies the behavior when the login button is clicked with invalid credentials.
+     */
     @Test
     public void testInvalidLoginActionPerformed() {
         loginGUI.userTextField.setText("user");
@@ -65,6 +84,10 @@ public class LoginGUITest {
         // this part assumes that the dialog with error message would appear.
     }
 
+    /**
+     * Tests the main method of the LoginGUI class.
+     * Verifies that the GUI is launched correctly on the event dispatch thread.
+     */
     @Test
     public void testMainMethod() {
         SwingUtilities.invokeLater(() -> {
