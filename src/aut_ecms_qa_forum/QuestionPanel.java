@@ -1,4 +1,3 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -6,10 +5,11 @@
 package aut_ecms_qa_forum;
 
 /**
- *
+ * The QuestionPanel class is a custom JPanel that displays a list of questions.
+ * It provides functionalities to load, search, and select questions.
+ * 
  * @author Harsh & Dillan
  */
-
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -20,9 +20,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class QuestionPanel extends JPanel {
-    private DefaultListModel<Question> listModel;
-    private JList<Question> questionList;
+    private DefaultListModel<Question> listModel; // Model to store the list of questions
+    private JList<Question> questionList; // JList to display the questions
 
+    /**
+     * Constructs a QuestionPanel and initializes the GUI components.
+     */
     public QuestionPanel() {
         setLayout(new BorderLayout(10, 10));
         listModel = new DefaultListModel<>();
@@ -32,6 +35,9 @@ public class QuestionPanel extends JPanel {
         loadQuestions();
     }
 
+    /**
+     * Loads all questions from the database and displays them in the list.
+     */
     public void loadQuestions() {
         listModel.clear();
         List<Question> questions = ForumDatabase.getInstance().getQuestionManager().getAllQuestions();
@@ -40,6 +46,11 @@ public class QuestionPanel extends JPanel {
         }
     }
 
+    /**
+     * Searches for questions containing the specified text in their title or content.
+     * 
+     * @param searchText The text to search for in the questions
+     */
     public void searchQuestions(String searchText) {
         listModel.clear();
         List<Question> questions = ForumDatabase.getInstance().getQuestionManager().getAllQuestions();
@@ -51,18 +62,34 @@ public class QuestionPanel extends JPanel {
         }
     }
 
+    /**
+     * Gets the currently selected question from the list.
+     * 
+     * @return The selected question, or null if no question is selected
+     */
     public Question getSelectedQuestion() {
         return questionList.getSelectedValue();
     }
 
+    /**
+     * Adds a listener for selection events on the question list.
+     * 
+     * @param listener The listener to be added
+     */
     public void addQuestionSelectionListener(ListSelectionListener listener) {
         questionList.addListSelectionListener(listener);
     }
 
+    /**
+     * Custom list cell renderer for displaying questions in the JList.
+     */
     private class QuestionListCellRenderer extends JPanel implements ListCellRenderer<Question> {
-        private JLabel titleLabel;
-        private JLabel authorLabel;
+        private JLabel titleLabel; // Label to display the question title
+        private JLabel authorLabel; // Label to display the question author
 
+        /**
+         * Constructs a QuestionListCellRenderer.
+         */
         public QuestionListCellRenderer() {
             setLayout(new BorderLayout(10, 10));
             setBorder(new EmptyBorder(10, 10, 10, 10));
