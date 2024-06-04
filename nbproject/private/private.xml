@@ -15,14 +15,19 @@
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/AnswerPanel.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/ForumDatabase.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/LoginGUI.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/test/aut_ecms_qa_forum/AdminTest.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/DerbyDatabaseManager.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/Answer.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/test/aut_ecms_qa_forum/DerbyDatabaseManagerTest.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/Admin.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/UserManager.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/AnswerManager.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/QuestionManager.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/test/aut_ecms_qa_forum/QuestionTest.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/QAndAForum.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/test/aut_ecms_qa_forum/LoginGUITest.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/Question.java</file>
+            <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/test/aut_ecms_qa_forum/AnswerTest.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/User.java</file>
             <file>file:/C:/Users/harsh/Downloads/AUT_ECMS_QA_Forum-main%20(1)/AUT_ECMS_QA_Forum-main/src/aut_ecms_qa_forum/QuestionPanel.java</file>
         </group>
