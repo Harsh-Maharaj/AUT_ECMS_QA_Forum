@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 // Check admin class
 
-
 // Testing purposes for Branch merging
 public class Admin extends User {
     /**
@@ -42,6 +41,7 @@ public class Admin extends User {
     public void editQuestion(Question question, String newTitle, String newContent) {
         question.setTitle(newTitle);
         question.setContent(newContent);
+        ForumDatabase.getInstance().getQuestionManager().updateQuestion(question);
     }
 
     /**
