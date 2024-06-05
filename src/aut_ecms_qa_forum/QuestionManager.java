@@ -1,9 +1,5 @@
 package aut_ecms_qa_forum;
 
-/**
- * @author Harsh & Dillan
- */
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +8,8 @@ import javax.swing.JOptionPane;
 /**
  * The QuestionManager class provides methods to manage questions in the forum.
  * It includes methods to add, remove, and retrieve questions.
+ * 
+ * @author Harsh & Dillan
  */
 public class QuestionManager {
 
@@ -109,5 +107,23 @@ public class QuestionManager {
             e.printStackTrace();
         }
         return questions;
+    }
+
+    /**
+     * Updates an existing question in the database.
+     * 
+     * @param question The question to be updated
+     */
+    public void updateQuestion(Question question) {
+        String sql = "UPDATE Questions SET title = ?, content = ? WHERE id = ?";
+        try (Connection conn = DerbyDatabaseManager.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, question.getTitle());
+            pstmt.setString(2, question.getContent());
+            pstmt.setInt(3, question.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
